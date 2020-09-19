@@ -73,4 +73,7 @@
   ; Returns the first false value, or the last value
   (and :tea :coffee) ; => :coffee
   (and :tea nil false) ; => nil
-  )
+
+  ; VARIABLES
+  (def cat-name "Lupita")
+  (def cat-names ["Lupita" "Kupita" "Bupita" "Vito" "Rijong"]))
