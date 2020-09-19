@@ -1,44 +1,33 @@
-# clojure-noob
+# Clojure Noob
 
-FIXME: description
+My personal cheat sheet when learning this weird language [Clojure](https://clojure.org/), along with its packaging system [Leiningen](https://leiningen.org/). Like, see this weird philosophy:
 
-## Installation
+> It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures.
+> —Alan Perlis
 
-Download from http://example.com/FIXME.
+## Setup
 
-## Usage
+```bash
+git clone https://github.com/ianadiwibowo/clojure-noob.git
+cd clojure-noob
+```
 
-FIXME: explanation
+## Run
 
-    $ java -jar clojure-noob-0.1.0-standalone.jar [args]
+Dry run:
 
-## Options
+```bash
+lein run
+```
 
-FIXME: listing of options this app accepts.
+Clojure Lein REPL:
 
-## Examples
+```bash
+lein repl
+```
 
-...
+Compile to JAR:
 
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2020 FIXME
-
-This program and the accompanying materials are made available under the
-terms of the Eclipse Public License 2.0 which is available at
-http://www.eclipse.org/legal/epl-2.0.
-
-This Source Code may also be made available under the following Secondary
-Licenses when the conditions for such availability set forth in the Eclipse
-Public License, v. 2.0 are satisfied: GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or (at your
-option) any later version, with the GNU Classpath Exception which is available
-at https://www.gnu.org/software/classpath/license.html.
+```bash
+java -jar target/uberjar/clojure-noob-0.1.0-SNAPSHOT-standalone.jar
+```
