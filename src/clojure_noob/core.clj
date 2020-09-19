@@ -15,7 +15,7 @@
   (/ 60 12) ; => 5
   (- 33 3) ; => 30
   (* 4 5 5) ; => 100
-  (str "Pupuru" "neko") ; => "Pupuruneko" (concatenates string)
+  (str "Pupuru" "neko") ; => "Pupuruneko" ; Concatenates string
 
   ; IF
   ; (if condition-form
@@ -67,7 +67,7 @@
   (or false nil :pupuruneko 2) ; => :pupuruneko
   (or false) ; => false
   (or nil) ; => nil
-  (or (= 1 1) (= 2 3)) ; => false (use this for `if` condition check)
+  (or (= 1 1) (= 2 3)) ; => false ; Use this for `if` condition check
 
   ; AND
   ; Returns the first false value, or the last value
@@ -89,10 +89,25 @@
             :second-cat "Vito"
             :third-cat "Rijong") ; Or use `hash-map` operator
   
-  (get {:a 0 :b 1} :b) ; => 1 (hashmap retrieval, `nil` if not found)
+  (get {:a 0 :b 1} :b) ; => 1 ; hashmap retrieval, `nil` if not found
   (get {:a 0 :b 1} :c "Not Found") ; Use default value if not found
   
   (get-in {:a 0 :b {:c "Inner Value"}} [:b :c]) ; => "Inner Value"
   
   ({:a 77} :a) ; => 77
+  
+  ; VECTOR (ARRAY)
+  [1 2 3]
+  (vector "A" "B" "C")
+  
+  (get ["A" "B" "C"] 0) ; => "A" ; Retrieval by index)
+  
+  (conj [10 20 30] 40) ; => [10 20 30 40] ; Append
+  
+  ; LIST
+  ; Vector, but stupid
+  '(1 2 3 4)
+  (nth '(1 2 3 4) 0) ; => 1
+  
+  (conj '(10 20 30) 40) ; => [40 10 20 30] ; Prepend
   )
