@@ -15,7 +15,10 @@
   (/ 60 12) ; => 5
   (- 33 3) ; => 30
   (* 4 5 5) ; => 100
+  (mod 10 9) ; => 1
   (str "Pupuru" "neko") ; => "Pupuruneko" ; Concatenates string
+  (first [5 8 9 1 0 4]) ; => 5
+  (last [5 8 9 1 0 4]) ; => 4
 
   ; IF
   ; (if condition-form
@@ -74,7 +77,7 @@
   (and :tea :coffee) ; => :coffee
   (and :tea nil false) ; => nil
 
-  ; VARIABLES
+  ; VARIABLE
   (def cat-name "Lupita")
   (def cat-names ["Lupita" "Kupita" "Bupita" "Vito" "Rijong"])
 
@@ -88,26 +91,60 @@
   (hash-map :first-cat "Lupita"
             :second-cat "Vito"
             :third-cat "Rijong") ; Or use `hash-map` operator
-  
+
   (get {:a 0 :b 1} :b) ; => 1 ; hashmap retrieval, `nil` if not found
   (get {:a 0 :b 1} :c "Not Found") ; Use default value if not found
-  
+
   (get-in {:a 0 :b {:c "Inner Value"}} [:b :c]) ; => "Inner Value"
-  
+
   ({:a 77} :a) ; => 77
-  
+
   ; VECTOR (ARRAY)
   [1 2 3]
   (vector "A" "B" "C")
-  
+
   (get ["A" "B" "C"] 0) ; => "A" ; Retrieval by index)
-  
+
   (conj [10 20 30] 40) ; => [10 20 30 40] ; Append
-  
+
   ; LIST
   ; Vector, but stupid
   '(1 2 3 4)
   (nth '(1 2 3 4) 0) ; => 1
-  
+
   (conj '(10 20 30) 40) ; => [40 10 20 30] ; Prepend
+
+  ; SET
+  ; A collection of unique values
+  #{"Taeka" 3 :yuen-jumbo}
+
+  (hash-set 1 2 1 2 1 2) ; => #{1 2} ; Like uniq() in Ruby
+
+  (conj #{1 2 3} 3) ; => #{1 3 2} ; Duplicate value will be distinct-ed
+
+  (set [1 2 1 2 1 2]) ; => #{1, 2} ; Create set from existing vector
+
+  (contains? #{:a :b :c} :c) ; => true
+  (contains? #{:a :b :c} :d) ; => false
+
+  (:a #{:a :b}) ; => :a ; Like, find if exists
+  (get #{:a :b} :a) ; => :a ; Synonim
+  (:c #{:a :b}) ; => nil
+  (get #{:a :b} :c) ; => nil
+
+  ; FUNCTION
+
+  ; Since function is first-class citizen, it can be an argument
+  ; => #object[clojure.core$_PLUS_ 0x67ac2a24 "clojure.core$_PLUS_@67ac2a24"]
+  (or + -) ; `+` and `-` are functions too
+  ((or + 1) 1 2 3) ; => 6 ; Because `+` is the result of the `or`
+
+  ; Higher-order functions: Functions that can either take a function
+  ; as an argument or return a function. Thus, Clojure supports
+  ; first-class functions
+  (inc 1) ; => 2
+  (map inc [0 1 2 3 4]) ; => (1 2 3 4 5)
+  
+  (dec 2) ; => 1
+  (map dec [0 1 2 3 4]) ; => (-1 0 1 2 3)
   )
