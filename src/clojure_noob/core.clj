@@ -76,4 +76,23 @@
 
   ; VARIABLES
   (def cat-name "Lupita")
-  (def cat-names ["Lupita" "Kupita" "Bupita" "Vito" "Rijong"]))
+  (def cat-names ["Lupita" "Kupita" "Bupita" "Vito" "Rijong"])
+
+  ; HASHMAP
+  {:first-cat "Lupita"
+   :second-cat "Vito"
+   :third-cat "Rijong"}
+
+  {:cat {:name "Kupita" :type "Orange Cat"}} ; Nested hashmap
+
+  (hash-map :first-cat "Lupita"
+            :second-cat "Vito"
+            :third-cat "Rijong") ; Or use `hash-map` operator
+  
+  (get {:a 0 :b 1} :b) ; => 1 (hashmap retrieval, `nil` if not found)
+  (get {:a 0 :b 1} :c "Not Found") ; Use default value if not found
+  
+  (get-in {:a 0 :b {:c "Inner Value"}} [:b :c]) ; => "Inner Value"
+  
+  ({:a 77} :a) ; => 77
+  )
