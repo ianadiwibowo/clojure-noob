@@ -48,6 +48,29 @@
     "Pupuruneko TRUE") ; => "Pupuruneko TRUE"
 
   ; NIL
+  ; `nil` and `false` are falsey, everything else are truthy
   (nil? 7) ; => false
   (nil? nil) ; => true
+
+  ; EQUALITY
+  (= 1 1) ; => true
+  (= nil nil) ; => true
+  (= 6 7) ; => false
+
+  (if (= 1 1)
+    (println "Equal")
+    (println "Not equal"))
+
+  ; OR
+  ; Returns the first truthy value, or the last value
+  (or false true) ; => true
+  (or false nil :pupuruneko 2) ; => :pupuruneko
+  (or false) ; => false
+  (or nil) ; => nil
+  (or (= 1 1) (= 2 3)) ; => false (use this for `if` condition check)
+
+  ; AND
+  ; Returns the first false value, or the last value
+  (and :tea :coffee) ; => :coffee
+  (and :tea nil false) ; => nil
   )
