@@ -1,9 +1,15 @@
 # Clojure Noob
 
-My personal cheat sheet when learning this weird language [Clojure](https://clojure.org/), along with its packaging system [Leiningen](https://leiningen.org/). Like, see this weird philosophy:
+My personal cheat sheet when learning this weird language [Clojure](https://clojure.org/), along with easy packaging system [Leiningen](https://leiningen.org/). Like, see this weird philosophy:
 
 > It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures.
+>
 > —Alan Perlis
+
+## Prerequisites
+
+- Java OpenJDK version 8 (minimum)
+- Leiningen 2.9.4 (Clojure included)
 
 ## Setup
 
