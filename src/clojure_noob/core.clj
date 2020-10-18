@@ -237,4 +237,8 @@
   
   ;; Or with `#`, with `%` for the argument
   (#(* % 3) 8) ;; => 24
+  (map #(str "Hi " %) ["Kupita" "Lupita"]) ;; => ("Hi Kupita" "Hi Lupita")
+  
+  ;; Use %1, %2, %3, ... for multiple arguments
+  (#(str %1 " and " %2) "Pupuru" "neko") ;; => "Pupuru and neko"
   )
