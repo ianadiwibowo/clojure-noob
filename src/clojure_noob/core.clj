@@ -41,6 +41,13 @@
        (clojure.string/join ", " things))
   )
 
+;; Hashmap as a parameter
+(defn set-cat-location
+  "Set cat's GPS position"
+  [{lat :lat, long :long}]
+  (println (str "Cat's GPS position: " lat ", " long))
+  )
+
 (defn -main
   "Main function -- entry point"
   [& args]
@@ -216,4 +223,6 @@
 
   ;; Refer to `defn cat-favorite-things` before `defn -main`
   (cat-favorite-things "Taeka" "ball" "rope" "Whiskas")
-  )
+
+  ;; Hashmap as a parameter  
+  (set-cat-location {:lat 33.14 :long 54.23}))
