@@ -63,6 +63,10 @@
   (- 33 3) ;; => 30
   (* 4 5 5) ;; => 100
   (mod 10 9) ;; => 1
+  (> 5 6) ;; => false
+  (< 5 6) ;; => true
+  (>= 5 6) ;; => false
+  (<= 5 6) ;; => true
   (str "Pupuru" "neko") ;; => "Pupuruneko" ;; `str` concatenates string
   (first [5 8 9 1 0 4]) ;; => 5
   (last [5 8 9 1 0 4]) ;; => 4
@@ -225,4 +229,12 @@
   (cat-favorite-things "Taeka" "ball" "rope" "Whiskas")
 
   ;; Hashmap as a parameter  
-  (set-cat-location {:lat 33.14 :long 54.23}))
+  (set-cat-location {:lat 33.14 :long 54.23})
+  
+  ;; Anonymous function with `fn`
+  (map (fn [name] (str "Hi " name)) ["Kupita" "Lupita"])
+  ;; => ("Hi Kupita" "Hi Lupita")
+  
+  ;; Or with `#`, with `%` for the argument
+  (#(* % 3) 8) ;; => 24
+  )
