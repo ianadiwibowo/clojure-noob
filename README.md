@@ -9,7 +9,11 @@ My personal cheat sheet when learning this weird language [Clojure](https://cloj
 ## Prerequisites
 
 - Java OpenJDK version 8 (minimum)
-- Leiningen 2.9.4 (Clojure included)
+- Leiningen 2.9.4 (Clojure is already included) -- The easiest way is to use `brew install leiningen` (macOS)
+
+## Learning Guide
+
+- Follow step-by-step guides from [Clojure for the Brave and True](https://www.braveclojure.com/)
 
 ## Setup
 

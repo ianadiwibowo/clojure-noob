@@ -1,18 +1,24 @@
 (ns clojure-noob.core
   (:gen-class))
 
+;; Tips: Start reading from `defn -main` function, then follow the flow
+
+;; `defn` is for declaring a function
+;; Function declaration order matters
 (defn say-hello-to-cat
   "Say hello to the cat in the argument"
   [name type]
   (str "Hello, " name ". Super gemoi " type "!"))
 
-;; Arity Overloading, in this case 1-arity and 2-arity
+;; Arity Overloading, in this case 2-arity, 1-arity, and 0-arity
 (defn pet-cat
   "Pet the cat"
   ([name type]
    (str "Pet " name ", the " type))
   ([name]
-   (pet-cat name "normal cat")) ;; Can be used for default argument
+   (pet-cat name "normal cat")) ;; Can be used to fill default argument
+  ([]
+   (pet-cat "Anonymous Cat" "normal cat"))
   )
 
 ;; call-cats has infinite arguments, n-arity
@@ -25,6 +31,15 @@
   "Call the cats"
   [& names]
   (map call-each-cat names))
+
+;; Combining mandatory argument `name` with n-arity arguments `things`
+;; But the "rest parameters" should be on the last position
+(defn cat-favorite-things
+  "Assign cat's favorite stuff"
+  [name & things]
+  (str name "'s favorite things: "
+       (clojure.string/join ", " things))
+  )
 
 (defn -main
   "Main function -- entry point"
@@ -41,7 +56,7 @@
   (- 33 3) ;; => 30
   (* 4 5 5) ;; => 100
   (mod 10 9) ;; => 1
-  (str "Pupuru" "neko") ;; => "Pupuruneko" ;; Concatenates string
+  (str "Pupuru" "neko") ;; => "Pupuruneko" ;; `str` concatenates string
   (first [5 8 9 1 0 4]) ;; => 5
   (last [5 8 9 1 0 4]) ;; => 4
 
@@ -60,8 +75,15 @@
     "Pupuruneko TRUE"
     "Pupuruneko FALSE") ;; => "Pupuruneko FALSE"
 
-  ;; `do` for multiple expressions
-  (if  true
+  ;; `do` for multiple expressions, as inline command
+  (do
+    (println "1st action")
+    (println "2nd action")
+    (println "3rd action")
+    (println "4th action"))
+
+  ;; `do` can be used for multiple `if` execution
+  (if true
     (do
       (println "Success!")
       "Pupuruneko TRUE")
@@ -76,9 +98,13 @@
     "Pupuruneko TRUE") ;; => "Pupuruneko TRUE"
 
   ;; NIL
-  ;; `nil` and `false` are falsey, everything else are truthy
   (nil? 7) ;; => false
+  (nil? false) ;; => false
   (nil? nil) ;; => true
+
+  ;; FALSE?
+  (false? false) ;; => true
+  (false? nil) ;; => false
 
   ;; EQUALITY
   (= 1 1) ;; => true
@@ -95,7 +121,7 @@
   (or false nil :pupuruneko 2) ;; => :pupuruneko
   (or false) ;; => false
   (or nil) ;; => nil
-  (or (= 1 1) (= 2 3)) ;; => false ;; Use this for `if` condition check
+  (or (= 1 1) (= 2 3)) ;; => false ;; Use this for `if` conditions check
 
   ;; AND
   ;; Returns the first false value, or the last value
@@ -103,8 +129,9 @@
   (and :tea nil false) ;; => nil
 
   ;; VARIABLE
+  ;; `def` declares a variable, while `defn` declares a function
   (def cat-name "Lupita")
-  (def cat-names ["Lupita" "Kupita" "Bupita" "Vito" "Rijong"])
+  (def cat-names ["Lupita" "Kupita" "Bupita" "Vito" "Rijong"]) ;; Array/vector
 
   ;; HASHMAP
   {:first-cat "Lupita"
@@ -117,8 +144,8 @@
             :second-cat "Vito"
             :third-cat "Rijong") ;; Or use `hash-map` operator
 
-  (get {:a 0 :b 1} :b) ;; => 1 ;; hashmap retrieval, `nil` if not found
-  (get {:a 0 :b 1} :c "Not Found") ;; Use default value if not found
+  (get {:a 0 :b 1} :b) ;; => 1 ;; hashmap retrieval, `nil` if key not found
+  (get {:a 0 :b 1} :c "Not Found") ;; Returns default value if key not found
 
   (get-in {:a 0 :b {:c "Inner Value"}} [:b :c]) ;; => "Inner Value"
 
@@ -133,7 +160,7 @@
   (conj [10 20 30] 40) ;; => [10 20 30 40] ;; Append
 
   ;; LIST
-  ;; Vector, but stupid
+  ;; Like vector, but stupid
   '(1 2 3 4)
   (nth '(1 2 3 4) 0) ;; => 1
 
@@ -173,17 +200,20 @@
   (dec 2) ;; => 1
   (map dec [0 1 2 3 4]) ;; => (-1 0 1 2 3)
 
-  ;; Refer to `defn say-hello-to-cat` before `defn main`
+  ;; Refer to `defn say-hello-to-cat`, declared before `defn -main`
   (say-hello-to-cat "Bupita" "Kucing Belang Tiga")
   ;; => Hello, Bupita. Super gemoi Kucing Belang Tiga!
 
-  ;; Refer to `defn pet-cat` before `defn main`
+  ;; Refer to `defn pet-cat`, declared before `defn -main`
   (pet-cat "Taeka" "Yuen Jumbo") ;; => Pet Taeka, the Yuen Jumbo
 
   (pet-cat "Taeka") ;; => Pet Taeka, the normal cat
-  
-  ;; Refer to `defn call-cats` before `defn main`
+
+  ;; Refer to `defn call-cats` before `defn -main`
   (println (call-cats "Lupita")) ;; => (Hello, Lupita.)
   (println (call-cats "Bupita" "Kupita" "Rijong"))
   ;; => (Hello, Bupita. Hello, Kupita. Hello, Rijong.)
+
+  ;; Refer to `defn cat-favorite-things` before `defn -main`
+  (cat-favorite-things "Taeka" "ball" "rope" "Whiskas")
   )
