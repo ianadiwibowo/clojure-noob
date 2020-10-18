@@ -7,13 +7,24 @@
   (str "Hello, " name ". Super gemoi " type "!"))
 
 ;; Arity Overloading, in this case 1-arity and 2-arity
-(defn pet
+(defn pet-cat
   "Pet the cat"
   ([name type]
    (str "Pet " name ", the " type))
   ([name]
-   (pet name "normal cat")) ;; Can be used for default argument
+   (pet-cat name "normal cat")) ;; Can be used for default argument
   )
+
+;; call-cats has infinite arguments, n-arity
+;; The rest parameters should be put at the end
+(defn call-each-cat
+  "Call just one cat"
+  [name]
+  (str "Hello, " name "."))
+(defn call-cats
+  "Call the cats"
+  [& names]
+  (map call-each-cat names))
 
 (defn -main
   "Main function -- entry point"
@@ -166,10 +177,13 @@
   (say-hello-to-cat "Bupita" "Kucing Belang Tiga")
   ;; => Hello, Bupita. Super gemoi Kucing Belang Tiga!
 
-  ;; Refer to `defn pet` before `defn main`
-  (pet "Taeka" "Kucing Yuen Jumbo")
-  ;; => Pet Taeka, the Kucing Yuen Jumbo
+  ;; Refer to `defn pet-cat` before `defn main`
+  (pet-cat "Taeka" "Yuen Jumbo") ;; => Pet Taeka, the Yuen Jumbo
 
-  (pet "Taeka")
-  ;; => Pet Taeka, the normal cat
+  (pet-cat "Taeka") ;; => Pet Taeka, the normal cat
+  
+  ;; Refer to `defn call-cats` before `defn main`
+  (println (call-cats "Lupita")) ;; => (Hello, Lupita.)
+  (println (call-cats "Bupita" "Kupita" "Rijong"))
+  ;; => (Hello, Bupita. Hello, Kupita. Hello, Rijong.)
   )
